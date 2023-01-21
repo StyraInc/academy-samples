@@ -16,4 +16,4 @@ spec:
     kinds:
       - apiGroups: [""]
         kinds: ["Pod"]       # apply to Pods
-  enforcementAction: dryrun  # Remove this line to deny non-compliant requests
+  enforcementAction: dryrun  # "dryrun" does not block non-compliant requests
