@@ -5,8 +5,8 @@ metadata:
 spec:
   match:
     namespaces:
-      - "default"          # apply to the "default" namespace
+      - "default"            # apply to the "default" namespace
     kinds:
       - apiGroups: [""]
-        kinds: ["Pod"]     # apply to Pods
-  enforcementAction: deny  # Remove this line to deny non-compliant requests
+        kinds: ["Pod"]       # apply to Pods
+  enforcementAction: dryrun  # "dryrun" does not block non-compliant requests
