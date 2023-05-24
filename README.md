@@ -11,3 +11,7 @@ Planned courses include:
 * OPA in Production Best Practices
 * Terraform Validation with Styra
 * Kubernetes Infrastructure Authorization with Styra
+
+## Community
+
+For questions, discussions and announcements related to Styra products, services and open source projects, please join the Styra community on [Slack](https://communityinviter.com/apps/styracommunity/signup)!
