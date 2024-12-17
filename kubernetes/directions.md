@@ -3,13 +3,18 @@
 ## Directions
 ### Lab Preparation
 1. Clone the required repository:
-    ```
+    ```shell
     git clone https://github.com/StyraInc/academy-samples.git
     cd academy-samples/kubernetes/repo
     ```
 
 ### Administrator setting up the manifests repo with validation configs
-1. Create the file `.styra.yaml` with the following content:
+1. Create the repo validation config file.
+    File name:
+		```
+		.styra.yaml
+		```
+		Content:
     ```yaml
     checks:
       dev_deployments:
@@ -18,7 +23,7 @@
             - k8s/deployments/*.yaml
     ```
 2. Commit change to the repo.
-    ```
+    ```shell
     git add .styra.yaml
     git commit -m "Styra config to check deployment YAMLs"
     ```
@@ -30,20 +35,27 @@
 #### Set-up local toolchain for validation
 1. Download the styra CLI from the docs page: [https://docs.styra.com/das/reference/cli/install-use-cli](https://docs.styra.com/das/reference/cli/install-use-cli)
 2. Confirm the CLI is working:
-    ```
+    ```shell
     styra version
     ```
-3. Configure the connection to Styra workpsace by creating this file in your user directory `~/.styra/config`:
+3. Configure the connection to Styra workpsace by creating the config file in your user directory.
+    File path:
+		```
+		~/.styra/config
+		```
+
+    Content:
     ```yaml
     organization_id: edu-das.styra.com
     token: <secret token to be provided by trainer>
-    url: https://edu-das.styra.com
     ```
 #### Create and validate manifest
 1. Create a resource manifest `k8s/deployments/nginx.yaml` to add an nginx ingress deployment. View the file that is already created for you.
-   ```cat k8s/deployments/nginx.yaml```
+    ```shell
+	  cat k8s/deployments/nginx.yaml
+	  ```
 2. Locally validate new manifest before submission for review.
-    ```bash
+    ```shell
     styra validate check-local --repo-path . --output out.json
     cat out.json
     ```
@@ -59,7 +71,7 @@
     ```
 
 2. Validate the updated manifest.
-    ```bash
+    ```shell
     styra validate check-local --repo-path . --output out.json
     cat out.json
     ```
