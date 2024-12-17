@@ -11,10 +11,11 @@
 ### Administrator setting up the manifests repo with validation configs
 1. Create the repo validation config file.
     File name:
-		```
-		.styra.yaml
-		```
-		Content:
+    ```
+    .styra.yaml
+    ```
+
+    Content:
     ```yaml
     checks:
       dev_deployments:
@@ -22,27 +23,34 @@
         files:
             - k8s/deployments/*.yaml
     ```
+
 2. Commit change to the repo.
     ```shell
     git add .styra.yaml
     git commit -m "Styra config to check deployment YAMLs"
     ```
+
 3. (Pretend for training purpose) Merge the change into remote so that this configuration will be checked out with the repo.
+
 4. (Trainer) Add a validating policy in Styra workspace `K8s hands-on` system to require readiness probe.
+
 5. (Trainer) Create an API token for local validation. Grant `SystemViewer` permission to the token.
 
 ### Developer adding manifests to the repo
 #### Set-up local toolchain for validation
+
 1. Download the styra CLI from the docs page: [https://docs.styra.com/das/reference/cli/install-use-cli](https://docs.styra.com/das/reference/cli/install-use-cli)
+
 2. Confirm the CLI is working:
     ```shell
     styra version
     ```
+
 3. Configure the connection to Styra workpsace by creating the config file in your user directory.
     File path:
-		```
-		~/.styra/config
-		```
+    ```
+    ~/.styra/config
+    ```
 
     Content:
     ```yaml
@@ -53,10 +61,25 @@
 1. Create a resource manifest `k8s/deployments/nginx.yaml` to add an nginx ingress deployment. View the file that is already created for you.
     ```shell
 	  cat k8s/deployments/nginx.yaml
-	  ```
+	```
+
 2. Locally validate new manifest before submission for review.
     ```shell
-    styra validate check-local --repo-path . --output out.json
+    styra validate check-local
+    ```
+
+    Sample output
+    ```console
+    % styra validate check-local
+    Check dev_deployments failed
+
+    Found errors in the following files:
+    * k8s/deployments/nginx.yaml
+    ```
+
+    To see more detailed output:
+    ```shell
+    styra validate check-local --output out.json
     cat out.json
     ```
 
@@ -71,9 +94,9 @@
     ```
 
 2. Validate the updated manifest.
-    ```shell
-    styra validate check-local --repo-path . --output out.json
-    cat out.json
+    ```console
+    % styra validate check-local
+    Check dev_deployments passed: 1 file checked.
     ```
 
 3. (Pretend for training purpose) Submit the manifest for review.
