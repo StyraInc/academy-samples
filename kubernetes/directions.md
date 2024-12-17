@@ -28,8 +28,8 @@
     git commit -m "Styra config to check deployment YAMLs"
     ```
 3. (Pretend for training purpose) Merge the change into remote so that this configuration will be checked out with the repo.
-4. (Trainer) Add a validating policy to Styra workspace.
-5. (Trainer) Create API token for local validation.
+4. (Trainer) Add a validating policy in Styra workspace `K8s hands-on` system to require readiness probe.
+5. (Trainer) Create an API token for local validation. Grant `SystemViewer` permission to the token.
 
 ### Developer adding manifests to the repo
 #### Set-up local toolchain for validation
